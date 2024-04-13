@@ -11,7 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="monospace"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/text_riddle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +26,10 @@
         android:layout_marginStart="45dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="45dp"
+        android:fontFamily="monospace"
         android:gravity="center"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/radio_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,24 +52,28 @@
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
             android:text="RadioButton" />
     </RadioGroup>
 
@@ -77,6 +85,7 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="32dp"
+        android:fontFamily="serif-monospace"
         android:text="Проверить"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/btn_stats"
@@ -90,6 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
         android:layout_marginEnd="45dp"
+        android:fontFamily="serif-monospace"
         android:text="Следующая загадка->"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/btn_stats"
@@ -105,6 +115,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="70dp"
+        android:fontFamily="serif-monospace"
         android:text="Статистика"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
