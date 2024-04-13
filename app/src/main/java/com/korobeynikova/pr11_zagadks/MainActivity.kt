@@ -1,8 +1,10 @@
 package com.korobeynikova.pr11_zagadks
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -102,6 +104,8 @@ class MainActivity : AppCompatActivity() {
         btnStats = findViewById(R.id.btn_stats)
         textRiddleCount = findViewById(R.id.text_riddle_count)
 
+        btnCheck.isActivated = false
+
         btnCheck.setOnClickListener {
             checkAnswer()
         }
@@ -142,5 +146,51 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Выберите ответ", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun showStats() {
+        val totalRiddles = currentRiddles.size
+        val correctAnswers = correctAnswersCount
+        val incorrectAnswers = incorrectAnswersCount
+
+        val intent = Intent(this, StatsActivity::class.java)
+        intent.putExtra("totalRiddles", totalRiddles)
+        intent.putExtra("correctAnswers", correctAnswers)
+        intent.putExtra("incorrectAnswers", incorrectAnswers)
+        startActivity(intent)
+    }
+
+    private fun showNextRiddle() {
+        if (currentRiddleIndex < currentRiddles.size) {
+            val (riddle, answersList, correctAnswerIndex) = currentRiddles[currentRiddleIndex]
+            textRiddle.text = riddle
+
+            radioGroup.removeAllViews()
+
+            answersList.shuffled().forEach { answer ->
+                val radioButton = RadioButton(this)
+                radioButton.text = answer
+                radioGroup.addView(radioButton)
+            }
+
+            currentRiddleIndex++
+            textRiddleCount.text = "Загадка $currentRiddleIndex из ${currentRiddles.size}"
+
+            btnCheck.visibility = View.VISIBLE
+        } else {
+            btnCheck.visibility = View.GONE
+            btnStats.isEnabled = true
+            btnStats.alpha = 1.0f
+            Toast.makeText(this, "Все загадки отгаданы", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun generateRiddles() {
+        currentRiddles = getRandomRiddles()
+    }
+
+    private fun getRandomRiddles(): List<Triple<String, List<String>, Int>> {
+        val shuffledRiddles = answers.shuffled()
+        return shuffledRiddles.take(10)
     }
 }
