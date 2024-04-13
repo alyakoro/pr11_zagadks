@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnCheck: Button
     private lateinit var btnStats: Button
     private lateinit var btnRiddle: Button
+    private lateinit var btnGoEnd: Button
     private lateinit var textRiddleCount: TextView
 
     private val answers = listOf(
@@ -105,6 +106,7 @@ class MainActivity : AppCompatActivity() {
         btnStats = findViewById(R.id.btn_stats)
         textRiddleCount = findViewById(R.id.text_riddle_count)
         btnRiddle = findViewById(R.id.btn_riddle)
+        btnGoEnd = findViewById(R.id.btn_goEnd)
 
         btnCheck.visibility = View.GONE
 
@@ -118,6 +120,9 @@ class MainActivity : AppCompatActivity() {
 
         btnRiddle.setOnClickListener {
             showNextRiddle()
+        }
+        btnGoEnd.setOnClickListener {
+            showEndRiddle()
         }
 
         generateRiddles()
@@ -159,6 +164,27 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("correctAnswers", correctAnswers)
         intent.putExtra("incorrectAnswers", incorrectAnswers)
         startActivity(intent)
+    }
+    private fun showEndRiddle(){
+        if (currentRiddleIndex > 1) {
+            val (riddle, answersList, correctAnswerIndex) = currentRiddles[currentRiddleIndex]
+            textRiddle.text = riddle
+
+            radioGroup.removeAllViews()
+
+            answersList.forEach { answer ->
+                val radioButton = RadioButton(this)
+                radioButton.text = answer
+                radioGroup.addView(radioButton)
+            }
+
+            currentRiddleIndex--
+            textRiddleCount.text = "Загадка $currentRiddleIndex из ${currentRiddles.size}"
+
+            btnCheck.visibility = View.VISIBLE
+        } else {
+            Toast.makeText(this, "Это первая загадка", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showNextRiddle() {

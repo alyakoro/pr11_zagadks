@@ -8,12 +8,10 @@
         android:id="@+id/text_total_riddles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="200dp"
         android:fontFamily="monospace"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_new_session"
+        app:layout_constraintBottom_toTopOf="@+id/text_correct_answers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,12 +20,10 @@
         android:id="@+id/text_correct_answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="serif-monospace"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/btn_new_session"
-        app:layout_constraintEnd_toStartOf="@+id/text_incorrect_answers"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_total_riddles" />
 
@@ -35,14 +31,13 @@
         android:id="@+id/text_incorrect_answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="serif-monospace"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/btn_new_session"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_correct_answers"
-        app:layout_constraintTop_toBottomOf="@+id/text_total_riddles" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_correct_answers" />
 
     <Button
         android:id="@+id/btn_new_session"
@@ -55,5 +50,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_correct_answers" />
+        app:layout_constraintTop_toBottomOf="@+id/text_incorrect_answers" />
 </androidx.constraintlayout.widget.ConstraintLayout>
